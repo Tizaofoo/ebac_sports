@@ -10,14 +10,14 @@ type Props = {
 
 export const paraReal = (valor: number) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(
-    valor
+    valor,
   )
 
 const ProdutoComponent = ({
   produto,
   aoComprar,
   favoritar,
-  estaNosFavoritos
+  estaNosFavoritos,
 }: Props) => {
   return (
     <S.Produto>

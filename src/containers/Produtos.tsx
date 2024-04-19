@@ -14,7 +14,7 @@ const ProdutosComponent = ({
   produtos,
   favoritos,
   adicionarAoCarrinho,
-  favoritar
+  favoritar,
 }: Props) => {
   const produtoEstaNosFavoritos = (produto: ProdutoType) => {
     const produtoId = produto.id
