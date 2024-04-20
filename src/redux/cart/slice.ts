@@ -16,16 +16,18 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<ProductType>) => {
-      console.log('adicionar ao carrinho')
       if (state.itemsToBuy.find((item) => item.id === action.payload.id)) {
-        alert('Item já adicionado')
+        state.itemsToBuy = state.itemsToBuy.filter(
+          (item) => item.id !== action.payload.id,
+        )
+        console.log(`RMV: [ ${action.payload.nome} ]`)
       } else {
         state.itemsToBuy = [...state.itemsToBuy, action.payload]
+        console.log(`ADD: [ ${action.payload.nome} ]`)
       }
     },
     setFavorite: (state, action: PayloadAction<number>) => {
       console.log(`favoritar: ${action.payload}`)
-      const index = state.favorites.indexOf(action.payload)
       if (state.favorites.includes(action.payload))
         state.favorites = state.favorites.filter((id) => id !== action.payload)
       else state.favorites = [...state.favorites, action.payload]

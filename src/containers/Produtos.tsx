@@ -9,9 +9,9 @@ const ProdutosComponent = () => {
   {
     if (isLoading)
       return (
-        <div style={{ width: '100%' }}>
-          <h1 style={{ fontSize: '50px' }}>...CARREGANDO...</h1>
-        </div>
+        <S.Loading>
+          <h1>« CARREGANDO »</h1>
+        </S.Loading>
       )
   }
 

@@ -4,7 +4,10 @@ import * as S from './styles'
 
 import { Produto as ProdutoType } from '../../App'
 import { addToCart, setFavorite } from '../../redux/cart/slice'
-import { selectIsFavorite } from '../../redux/cart/cart.selector'
+import {
+  selectIsFavorite,
+  selectIsInCart,
+} from '../../redux/cart/cart.selector'
 import { RootReducer } from '../../redux/store'
 
 type Props = {
@@ -24,6 +27,9 @@ const ProdutoComponent = ({ produto }: Props) => {
   const isFavorite = useSelector((root: RootReducer) =>
     selectIsFavorite(root.cart.favorites, produto.id),
   )
+  const inCart = useSelector((root: RootReducer) =>
+    selectIsInCart(root.cart.itemsToBuy, produto.id),
+  )
 
   return (
     <S.Produto>
@@ -38,7 +44,7 @@ const ProdutoComponent = ({ produto }: Props) => {
         {isFavorite ? '- Remover dos favoritos' : '+ Adicionar aos favoritos'}
       </S.BtnComprar>
       <S.BtnComprar onClick={adicionar} type="button">
-        Adicionar ao carrinho
+        {inCart ? 'Remover do Carrinho' : 'Adicionar ao carrinho'}
       </S.BtnComprar>
     </S.Produto>
   )

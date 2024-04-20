@@ -1,3 +1,4 @@
+import { Produto as ProductType } from '../../App'
 import { RootReducer } from '../store'
 
 export const selectProductinCart = (root: RootReducer) =>
@@ -14,3 +15,6 @@ export const selectFavouritesQtt = (root: RootReducer) =>
 
 export const selectIsFavorite = (favorites: number[], id: number) =>
   favorites.some((pid) => pid === id)
+
+export const selectIsInCart = (products: ProductType[], id: number) =>
+  products.some((p) => p.id === id)
